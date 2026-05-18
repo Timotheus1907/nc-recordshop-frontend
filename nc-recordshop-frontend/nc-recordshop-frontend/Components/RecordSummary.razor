@@ -1,0 +1,14 @@
+﻿@using ncrecordshopfrontend.Model
+
+<h3>RecordSummary</h3>
+
+<p>
+	@rec.Name <br />
+	@rec.Artist <br />
+	@rec.ReleaseDate
+</p>
+
+@code {
+	[Parameter]
+	public Album rec { get; set; }
+}

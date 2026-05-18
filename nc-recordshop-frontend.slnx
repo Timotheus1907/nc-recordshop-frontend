@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="nc-recordshop-frontend/nc-recordshop-frontend.Client/nc-recordshop-frontend.Client.csproj" />
+  <Project Path="nc-recordshop-frontend/nc-recordshop-frontend/nc-recordshop-frontend.csproj" />
+</Solution>

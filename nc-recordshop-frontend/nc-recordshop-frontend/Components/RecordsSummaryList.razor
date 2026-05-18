@@ -1,0 +1,14 @@
+﻿@using ncrecordshopfrontend.Model
+
+<h3>RecordsSummaryList</h3>
+
+<div>
+	@foreach (var rec in RecordList)
+	{
+		<RecordSummary rec="@rec"/>
+	}
+</div>
+
+@code {
+	public List<Album> RecordList = Album.GetMockAlbums();
+}
