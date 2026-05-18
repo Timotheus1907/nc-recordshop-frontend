@@ -1,4 +1,61 @@
+.name {
+    font-weight: 750;
+}
+
+.desc {
+    font-size: 11px;
+}
+
+.artist {
+    font-size: 16px;
+}
+
+.genre {
+    font-size: 14px;
+}
+
+.release-date {
+    font-size: 14px;
+}
+
+.quantity {
+    font-size: 12px;
+}
+
+.id {
+    font-size: 11px;
+}
+
+.song-list {
+    font-size: 10px;
+}
+
+.text {
+    color: green;
+    background-color: cyan;
+    max-width: 50%;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+h1 {
+    font-size: 46px;
+    text-align: center;
+    background-color: black;
+    color: mintcream;
+}
+
+footer {
+    text-align: center;
+    background-color: rosybrown;
+    letter-spacing: 2px;
+    color: black;
+}
+
 html, body {
+    background-color: darkslategrey;
+
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 

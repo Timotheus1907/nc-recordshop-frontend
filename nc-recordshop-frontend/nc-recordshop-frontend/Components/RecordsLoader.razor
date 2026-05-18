@@ -11,7 +11,7 @@
 	}
 	else
 	{
-		<p>LOADING</p>
+		<p>Currently Loading</p>
 	}
 </div>
 
@@ -20,20 +20,20 @@
 @code {
 	public List<Album>? albums { get; set; }
 
-	//public HttpClient httpClient = new HttpClient();
+	public HttpClient httpClient = new HttpClient();
 
 	public static readonly string BASE_URL = "https://localhost:7161/";
 
 	protected override async Task OnInitializedAsync()
 	{
-		using (HttpClient httpClient = new HttpClient())
-		{
-			string url = $"{BASE_URL}api/Album";
+		// Move HttpClient?
 
-			HttpResponseMessage response = await httpClient.GetAsync(url);
+		string url = $"{BASE_URL}api/Album";
 
-			albums = await httpClient.GetFromJsonAsync<List<Album>>(url);
-		}
+		//HttpResponseMessage response = await httpClient.GetAsync(url);
+
+		albums = await httpClient.GetFromJsonAsync<List<Album>>(url);
+		
 		//albums = await httpClient.GetFromJsonAsync<List<Album>>("DESKTOP-N6Q72PU\\SQLEXPRESS/api/Album");
 	}
 

@@ -1,0 +1,17 @@
+﻿<h3>EditText</h3>
+
+<InputText placeholder="Change Name" @bind-Value="Value"/>
+<button type="submit" @onclick="HandleInput" />
+
+@code {
+	[Parameter]
+	public string Value { get; set; } = string.Empty;
+
+	[Parameter]
+	public EventCallback<string> ValueChanged { get; set; }
+
+	public async Task HandleInput()
+	{
+		await ValueChanged.InvokeAsync(Value);
+	}
+}

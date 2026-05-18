@@ -1,0 +1,44 @@
+﻿@using ncrecordshopfrontend.Model
+
+<h3>RecordDetails</h3>
+
+<div class="text">
+	<div class="name">
+		@rec.Name
+		<InputText @bind-Value="newName" placeholder="Change name"/>
+	</div>
+	<div class="desc">
+		@rec.Description
+		</div>
+	<div class="artist">@rec.Artist</div>
+	<div class="genre">@rec.Genre</div>
+	<div class="release-date">@rec.ReleaseDate</div>
+	<div class="quantity">Quantity in stock: @rec.Quantity</div>
+	<div class="id">Album id: @rec.Id</div>
+	<div class="song-list">
+		<p>Track List:</p>
+		<ul>
+			@foreach (var song in rec.TrackList)
+			{
+				<li>
+					@song
+				</li>
+			}
+		</ul>
+	</div>
+
+	<button type="submit" @onclick="() => SetName(newName)">Submit</button>
+</div>
+
+@code {
+	[Parameter]
+	public string newName { get; set; } = string.Empty;
+
+	[Parameter]
+	public Album rec { get; set; }
+
+	public void SetName(string name)
+	{
+		rec.Name = name;
+	}
+}

@@ -1,11 +1,18 @@
-﻿@page "/"
+﻿@using ncrecordshopfrontend.Model
+
+
+
+@page "/"
 @rendermode InteractiveServer
 
 <PageTitle>Vinyl Vault</PageTitle>
 
 <h2>Home Placeholder</h2>
 
-<RecordsLoader />
+
+<RecordDetails rec="@Album.GetMockAlbums().First()"/>
+
+@*<RecordsLoader /> *@
 
 <p>placeholder</p>
 

@@ -2,6 +2,8 @@
 {
     public class Album
     {
+        //Todo add price, image
+
         public int Id { get; set; }
         public int Quantity { get; set; } = 0;
         public string Name { get; set; } = "";
