@@ -10,5 +10,6 @@
 </div>
 
 @code {
-	public List<Album> RecordList = Album.GetMockAlbums();
+	[Parameter]
+	public List<Album> RecordList { get; set; }
 }

@@ -1,0 +1,40 @@
+﻿@using ncrecordshopfrontend.Model
+
+
+
+<h3>RecordsLoader</h3>
+
+<div>
+	@if (albums != null)
+	{
+		<RecordsSummaryList RecordList="@albums"/>
+	}
+	else
+	{
+		<p>LOADING</p>
+	}
+</div>
+
+
+
+@code {
+	public List<Album>? albums { get; set; }
+
+	//public HttpClient httpClient = new HttpClient();
+
+	public static readonly string BASE_URL = "https://localhost:7161/";
+
+	protected override async Task OnInitializedAsync()
+	{
+		using (HttpClient httpClient = new HttpClient())
+		{
+			string url = $"{BASE_URL}api/Album";
+
+			HttpResponseMessage response = await httpClient.GetAsync(url);
+
+			albums = await httpClient.GetFromJsonAsync<List<Album>>(url);
+		}
+		//albums = await httpClient.GetFromJsonAsync<List<Album>>("DESKTOP-N6Q72PU\\SQLEXPRESS/api/Album");
+	}
+
+}
