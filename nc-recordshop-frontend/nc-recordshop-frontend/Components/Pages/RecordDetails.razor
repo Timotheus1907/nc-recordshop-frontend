@@ -1,0 +1,67 @@
+﻿@page "/record/{Id:int}"
+@using ncrecordshopfrontend.Model
+@using System.Globalization
+@inject HttpClient Http
+
+
+
+<div class="record-detail">
+    <div class="record-detail-info">
+        <div class="record-detail-title">@record.Name</div>
+        <div class="record-detail-artist">@record.Artist</div>
+        <div class="record-detail-genre"><span>Genre:</span> @record.Genre</div>
+        <div class="record-detail-release"><span>Released:</span> @record.ReleaseDate.ToString("dd MMM yyyy")</div>
+        <div class="record-detail-description">@record.Description</div>
+
+        <div class="record-detail-track-title">Track List:</div>
+        <div class="record-detail-track-list">
+            <ul>
+                @foreach (var song in record.TrackList)
+                {
+                    <li>@song</li>
+                }
+            </ul>
+        </div>
+
+        <div class="record-detail-stock">
+            <span class="detail-quantity">In stock: @record.Quantity</span>
+            <span class="detail-id">Album ID: @record.Id</span>
+        </div>
+
+        <div class="record-detail-rename">
+            <InputText @bind-Value="newName" placeholder="Change name" />
+            <button type="button" @onclick="() => SetName(newName)">Submit</button>
+        </div>
+    </div>
+
+    <div class="record-detail-image">
+        <img src="@record.ImageUrl" alt="@record.Name cover" />
+        <div class="record-detail-price">
+            @record.Price.ToString("C", CultureInfo.GetCultureInfo("en-GB"))
+        </div>
+    </div>
+</div>
+
+@code {
+	[Parameter]
+	public int Id { get; set; }
+
+	public string newName { get; set; } = string.Empty;
+
+	public Album record { get; set; } = new();
+
+	public static readonly string BASE_URL = "https://localhost:7161/";
+
+	protected override async Task OnInitializedAsync()
+	{
+		string url = $"{BASE_URL}api/album/{Id}";
+
+
+		record = await Http.GetFromJsonAsync<Album>(url);
+	}
+
+	public void SetName(string name)
+	{
+		record.Name = name;
+	}
+}

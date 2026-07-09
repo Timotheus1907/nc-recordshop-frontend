@@ -1,28 +1,42 @@
 ﻿@using ncrecordshopfrontend.Model
+@using System.Globalization
+@inject NavigationManager Nav
 
 
-<div class="record-card">
-	<div class="record-card-title">
-		@record.Name
+
+<div class="record-card" @onclick="GoToRecord">
+	<div class="record-card-info">
+		<div class="record-card-title">
+			@record.Name
+		</div>
+		<div class="record-card-artist">
+			@record.Artist
+		</div>
+		<div class="record-card-track-list-title">
+			Track List:
+		</div>
+		<div class="record-card-body">
+			@foreach (var song in record.TrackList)
+			{
+				@song<br />
+			}
+		</div>
 	</div>
-	<div class="record-card-artist">
-		@record.Artist
+	<div class="record-card-image">
+		<img src="@record.ImageUrl" alt="@record.Name Cover"/>
+		<div class="record-card-price">
+			@record.Price.ToString("C", CultureInfo.GetCultureInfo("en-GB"))
+		</div>
 	</div>
-
-	<div class="record-card-body">
-		@foreach (var song in record.TrackList)
-		{
-			@song;
-
-			<br />
-		}
-	</div>
-
-	<img src="@record.ImageUrl" alt="@record.Name Cover" width="130" />
 </div>
 
 
 @code {
 	[Parameter]
 	public Album record { get; set; } = new();
+
+	private void GoToRecord()
+	{
+		Nav.NavigateTo($"/record/{record.Id}");
+	}
 }
