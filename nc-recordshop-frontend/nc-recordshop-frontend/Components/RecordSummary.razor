@@ -1,13 +1,28 @@
 ﻿@using ncrecordshopfrontend.Model
 
-<h3>RecordSummary</h3>
 
-<p>
-	@rec.Name <br />
-	@rec.Artist
-</p>
+<div class="record-card">
+	<div class="record-card-title">
+		@record.Name
+	</div>
+	<div class="record-card-artist">
+		@record.Artist
+	</div>
+
+	<div class="record-card-body">
+		@foreach (var song in record.TrackList)
+		{
+			@song;
+
+			<br />
+		}
+	</div>
+
+	<img src="@record.ImageUrl" alt="@record.Name Cover" width="130" />
+</div>
+
 
 @code {
 	[Parameter]
-	public Album rec { get; set; }
+	public Album record { get; set; } = new();
 }

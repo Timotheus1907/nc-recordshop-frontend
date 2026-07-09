@@ -2,14 +2,14 @@
 
 <h3>RecordsSummaryList</h3>
 
-<div>
+<div class="record-grid">
 	@foreach (var rec in RecordList)
 	{
-		<RecordSummary rec="@rec"/>
+		<RecordSummary record="@rec"/>
 	}
 </div>
 
 @code {
 	[Parameter]
-	public List<Album> RecordList { get; set; }
+	public List<Album> RecordList { get; set; } = new();
 }

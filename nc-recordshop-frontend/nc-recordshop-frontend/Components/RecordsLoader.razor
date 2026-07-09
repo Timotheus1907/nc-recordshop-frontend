@@ -1,5 +1,5 @@
 ﻿@using ncrecordshopfrontend.Model
-
+@inject HttpClient Http
 
 
 <h3>RecordsLoader</h3>
@@ -20,21 +20,16 @@
 @code {
 	public List<Album>? albums { get; set; }
 
-	public HttpClient httpClient = new HttpClient();
 
 	public static readonly string BASE_URL = "https://localhost:7161/";
 
 	protected override async Task OnInitializedAsync()
 	{
-		// Move HttpClient?
 
 		string url = $"{BASE_URL}api/Album";
 
-		//HttpResponseMessage response = await httpClient.GetAsync(url);
+		albums = await Http.GetFromJsonAsync<List<Album>>(url);
 
-		albums = await httpClient.GetFromJsonAsync<List<Album>>(url);
-		
-		//albums = await httpClient.GetFromJsonAsync<List<Album>>("DESKTOP-N6Q72PU\\SQLEXPRESS/api/Album");
 	}
 
 }

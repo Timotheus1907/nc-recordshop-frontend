@@ -1,3 +1,30 @@
+.record-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 480px);
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.record-card {
+    background-color: gray;
+    border-radius: 1rem;
+    cursor: pointer;
+
+
+
+    overflow: hidden;
+}
+
+.record-card-title {
+
+}
+
+.record-card-artist {
+}
+
+.record-card-body {
+}
+
 .name {
     font-weight: 750;
 }
@@ -52,6 +79,15 @@ footer {
     letter-spacing: 2px;
     color: black;
 }
+
+
+
+
+
+
+/*  Auto generated code
+    Added: background-color: darkslategrey;
+*/
 
 html, body {
     background-color: darkslategrey;
